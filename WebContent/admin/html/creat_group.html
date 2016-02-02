@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建群组</title>
+    <link href="../common.css" rel="stylesheet" type="text/css" />
+    <link href="../wx.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="header">
+    <div id="logo"><span>创建群组</span></div>
+</div>
+<div class="reser_box">
+    <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+        <tr><th><div class="reser_th_b teg_l pl20">创建群组</div></th></tr>
+        <tr>
+            <td>
+                <div class="reser_td_b pl20">
+                    <div class="reser_div_a fl w_80 pr10 ">群名称:</div>
+                    <div class="reser_div_b fl pr30">
+                        <input name="" id="group_name" value="" class="diny_input"  />
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="reser_td_b pl20">
+                    <div class="reser_div_a fl w_80 pr10 ">群描述:</div>
+                    <div class="reser_div_b fl pr30">
+                        <textarea id="desc"></textarea>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="reser_td_b pl20">
+                    <div class="reser_div_a fl w_80 pr10 ">&nbsp;</div>
+                    <div class="reser_div_b fl pr30">
+                        <input class="btn-primary w_230" type="submit" value="创建">
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+<script src="../../sdk/jquery-1.11.1.js" type="text/javascript" language="JavaScript"></script>
+<script src="../common.js" type="text/javascript" language="JavaScript"></script>
+<script>
+    $(function(){
+        $('.btn-primary').click(function(){
+            var group_name=$('#group_name').val();
+            var desc=$('#desc').val();
+            if(group_name==''){
+                alert('请输入群组名称!');
+                return false;
+            }
+            if(desc==''){
+                alert('请输入群组描述!');
+                return false;
+            }
+            $.ajax({
+                type : "post",
+                dataType : "json",
+                data : {
+                    groupName : group_name,
+                    //owner : owner,
+                    desc : desc
+                },
+                url : "http://101.201.209.109/act/groups/createGroup",
+                success : function(data){
+                    if(data.code == '0'){
+                        //创建成功
+                    }else{
+                        //提示错误信息   data.errorMSG
+                    }
+                }
+            });
+        });
+    });
+</script>

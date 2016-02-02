@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="../css/common.css" rel="stylesheet" type="text/css" />
+    <link href="../css/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<style type="text/css">
+    input{
+        background-color: rgb(250, 255, 189);
+        background-image: none;
+        color: rgb(0, 0, 0);
+    }
+</style>
+<body>
+<div id="header">
+    <div id="logo"><span>后台管理系统（beta）</span></div>
+</div>
+<div style="margin:50px auto;width:300px">
+        <table width="400px">
+            <tr>
+                <td width="70">&nbsp;</td>
+                <td id="errmsg" style="color:#f00"></td>
+            </tr>
+            <tr>
+                <td height="35" align="right">账号：</td><td><input type="text" name="" id="mobile" /></td>
+            </tr>
+            <tr>
+                <td height="35" align="right">密码：</td>
+                <td>
+                    <input type="password" name="" id="pwd"/>
+                    <span class="forget-password">
+                        <a href="javascript:;" target="_blank" onclick="">忘记密码？</a>
+                    </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td><button class="btn-next" style="width:100px;height:30px" type="submit">登 录</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
+<script src="../js/jquery-1.7.2.min.js" type="text/javascript" language="JavaScript"></script>
+<script src="../js/common.js" type="text/javascript" language="JavaScript"></script>
+<script src="../js/admin.js" type="text/javascript" language="JavaScript"></script>
