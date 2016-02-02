@@ -17,6 +17,9 @@ function login(){
         alert('请输入密码!');
         return false;
     }
+    
+    
+    
     $.ajax({
         type : "post",
         dataType : "json",
