@@ -24,8 +24,26 @@
 		return serverUrl;
 	};
 	
+	var setItem = function(k,v){
+		sessionStorage.removeItem(k);
+		sessionStorage.setItem(k, v);
+	};
+	
+	var getItem = function(k){
+		return sessionStorage.getItem(k);
+	};
+	
+	 var getUrlParam = function (name){
+	        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	        var r = window.location.search.substr(1).match(reg);
+	        if (r != null) return unescape(r[2]); return null;
+	    };
+	    
 	_util = {
-			getServerUrl : getServerUrl	
+			getServerUrl : getServerUrl,
+			setItem:setItem,
+			getItem:getItem,
+			getUrlParam:getUrlParam
 	};
 	
 	

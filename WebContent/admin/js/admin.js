@@ -1,13 +1,11 @@
 var util  = window._util;
 $(function(){
         //登陆
-        $('.btn-next').click(function(){
-            
-        });
+        $('#login').click(login);
  });
 //登录
 function login(){
-	var username= $.trim($('#mobile').val());
+	var username= $('#name').val();
     var pwd= $('#pwd').val();
     if(username==''){
         alert('请输入账号!');
@@ -28,8 +26,11 @@ function login(){
         success : function(data){
             if(data.code == '0'){
                 //返回用户信息
+            	util.setItem("us",JSON.stringify(data));
+            	location.href = "groupList.html";
             }else{
                 //提示错误信息   data.errorMSG
+            	alert(data.errorMSG);
             }
         }
     });
