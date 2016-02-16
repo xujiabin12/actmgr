@@ -17,14 +17,11 @@
 	};
 	var _util = {};
 	
-	var serverUrl = "http://127.0.0.1:8080/act/";
+	var getServerUrl = "http://127.0.0.1:8080/act/";
 	
-//	var serverUrl = "http://124.192.206.155:8080/act/";
+//	var getServerUrl = "http://124.192.206.155:8080/act/";
 	
 	
-	var getServerUrl = function(){
-		return serverUrl;
-	};
 	
 	var setItem = function(k,v){
 		sessionStorage.removeItem(k);
@@ -48,7 +45,18 @@
 			getUrlParam:getUrlParam
 	};
 	
+	var checkLogin = function(){
+		var url = location.href;
+		if(url.indexOf("admin") == -1){
+			if(!getItem("us")){
+				window.location.href = "admin.html";
+			}
+		}
+		
+	};
 	
 	window._util = _util;
+	
+	checkLogin();
 	
 })();
