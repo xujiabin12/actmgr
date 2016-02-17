@@ -25,7 +25,6 @@ function initData(){
             	for(var i=0;i<users.length;i++){
             		var obj = users[i];
             		var html = "<tr>";
-            			html += "<td>"+(i+1)+"</td>";
             			html += "<td>"+obj.username+"</td>";
             			html += "<td>"+obj.nickname+"</td>";
             			html += "<td>"+getRoleName(obj.role)+"</td>";
@@ -33,7 +32,9 @@ function initData(){
             			if(obj.role != '1'){
             				html += "<a href='javascript:void(0)' onclick='setTeacher(\""+obj.userid+"\")'>设为老师</a>";
             			}
-//            		        html += "<a href='javascript:void(0)' onclick='outGroup("+obj.userid+")'>T出群组</a>";
+            			if(obj.role != '2'){
+            				html += "<a href='javascript:void(0)' onclick='setMgrpass(\""+obj.userid+"\",\""+obj.nickname+"\")'>设置密码</a>";
+            			}
             		    html += "</td>";
             		    html += "</tr>";
             		  $("#users").append(html);
@@ -44,6 +45,11 @@ function initData(){
             }
         }
     });
+}
+
+function setMgrpass(userid,nickname){
+	nickname = encodeURI(encodeURI(nickname));
+	location.href = "setPass.html?u="+userid+"&n="+nickname;
 }
 
 function setTeacher(userid){

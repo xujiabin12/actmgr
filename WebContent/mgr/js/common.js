@@ -47,7 +47,7 @@
 	
 	var checkLogin = function(){
 		var url = location.href;
-		if(url.indexOf("admin") == -1){
+		if(url.indexOf("index") == -1){
 			if(!getItem("us")){
 				window.location.href = "../index.html";
 			}
