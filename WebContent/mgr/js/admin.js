@@ -27,7 +27,7 @@ function login(){
             if(data.code == '0'){
                 //返回用户信息
             	util.setItem("us",JSON.stringify(data));
-            	location.href = "groupList.html";
+            	location.href = "html/groupList.html";
             }else{
                 //提示错误信息   data.errorMSG
             	alert(data.errorMSG);

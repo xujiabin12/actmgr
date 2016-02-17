@@ -12,7 +12,7 @@ $(function(){
                 return false;
             }
             var uinfo = util.getItem("us");
-            uinfo = eval(uinfo);
+            uinfo =  $.parseJSON(uinfo);
             $.ajax({
                 type : "post",
                 dataType : "json",

@@ -38,8 +38,8 @@ function datas(data){
 			html += "<td>"+obj.nickname+"</td>";
 			html += "<td>"+getRoleName(obj.role)+"</td>";
 			html += "<td class='tdcenter'>";
-		        html += "<a href='javascript:void(0)' onclick='stopSpeak("+obj.userid+")'>禁言</a>";
-		        html += "<a href='javascript:void(0)' onclick='outGroup("+obj.userid+")'>T出群组</a>";
+		        html += "<a href='javascript:void(0)' onclick='stopSpeak(\""+obj.userid+"\")'>禁言</a>";
+		        html += "<a href='javascript:void(0)' onclick='outGroup(\""+obj.userid+"\")'>T出群组</a>";
 		    html += "</td>";
 		    html += "</tr>";
 		    $("#users").append(html);
@@ -78,7 +78,7 @@ function stopSpeak(userid){
         url: util.getServerUrl+"users/stopSpeak",
         success: function (data) {
             if (data.code == '0') {
-            	datas("操作成功");
+            	alert("操作成功");
             } else {
             	alert(data.errorMSG);
             }

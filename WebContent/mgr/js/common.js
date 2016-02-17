@@ -17,9 +17,9 @@
 	};
 	var _util = {};
 	
-	var getServerUrl = "http://127.0.0.1:8080/act/";
+//	var getServerUrl = "http://127.0.0.1:8080/act/";
 	
-//	var getServerUrl = "http://124.192.206.155:8080/act/";
+	var getServerUrl = "http://101.201.209.109/act/";
 	
 	
 	
@@ -49,7 +49,7 @@
 		var url = location.href;
 		if(url.indexOf("admin") == -1){
 			if(!getItem("us")){
-				window.location.href = "admin.html";
+				window.location.href = "../index.html";
 			}
 		}
 		
