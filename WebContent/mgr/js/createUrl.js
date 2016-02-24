@@ -21,4 +21,26 @@ $(function(){
             });
 		}
 	});
+	
+	
+	$("#save").click(function(){
+		var url = document.getElementById("result").value;
+		if(url){
+			$.ajax({
+                type : "post",
+                dataType : "json",
+                data : {
+                	url : url
+                },
+                url : util.getServerUrl+"groups/setJoinGroupUrl",
+                success : function(data){
+                    if(data.code == '0'){
+                       alert("保存成功!");
+                    }else{
+                        alert(data.errorMSG);
+                    }
+                }
+            });
+		}
+	});
 });

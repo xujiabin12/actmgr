@@ -1,7 +1,6 @@
 var util  = window._util;
 $(function(){
         $('.ui-button').click(initData);
-        
         initData();
 });
 

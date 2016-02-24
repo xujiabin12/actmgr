@@ -39,7 +39,7 @@ function datas(data){
 			html += "<td>"+getRoleName(obj.role)+"</td>";
 			html += "<td class='tdcenter'>";
 		        html += "<a href='javascript:void(0)' onclick='stopSpeak(\""+obj.userid+"\")'>禁言</a>";
-		        html += "<a href='javascript:void(0)' onclick='outGroup(\""+obj.userid+"\")'>T出群组</a>";
+		        html += "<a href='javascript:void(0)' onclick='foreverStopSpeak(\""+obj.userid+"\")'>永久禁言</a>";
 		    html += "</td>";
 		    html += "</tr>";
 		    $("#users").append(html);
@@ -47,20 +47,17 @@ function datas(data){
 	
 }
 
-function outGroup(userid){
-	var groupid = $("#groupid").val();
+function foreverStopSpeak(userid){
 	$.ajax({
         type: "post",
         dataType: "json",
         data: {
-        	userid: userid,
-        	groupid:groupid
+        	userId: userid
         },
-        url: util.getServerUrl+"groups/outGroup",
+        url: util.getServerUrl+"users/foreverStopSpeak",
         success: function (data) {
             if (data.code == '0') {
-            	datas("操作成功");
-            	window.location.reload();
+            	alert("操作成功");
             } else {
             	alert(data.errorMSG);
             }
