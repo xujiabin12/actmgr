@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=640,user-scalable=0" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="browsermode" content="application"/>
+<title>ACT课堂</title>
+<link rel="stylesheet" href="css/index.css" />
+<script src="js/sdk/jquery-1.11.1.js"></script>
+<script src="js/sdk/strophe.js"></script>
+<script src="js/sdk/json2.js"></script>
+<script src="js/sdk/easemob.im-1.0.7.js"></script>
+<script src="js/sdk/easemob.im.config.js"></script>
+<script src="js/sdk/bootstrap.js"></script>
+<script src="js/util.js?v=1.0"></script>
+<script src="js/index.js?v=1.1"></script>
+</head>
+<body id="body">
+<audio id="actAudio" src=""></audio>
+        <div class="title">
+             <span id="talkto2" class="talkto2">聊天记录</span>
+            <span id="talkto" class="talkto"></span>
+            <span id="onlyTeacher" class="talktozk">只看导师</span>
+            <span id="talktoclose" class="talktoclose">关闭</span>
+        </div>
+        <!--聊天内容 content-->
+        <div class="content" id="chat01">
+
+        </div>
+        <!--聊天记录-->
+        <div id="historybox" class="historybox">
+            <!---老师标红 end-->
+            <div class="loadmore" id="loadmore">点击加载更多...</div>
+            <div id="histontent">
+
+
+            </div>
+        </div>
+        <!--聊天记录 end-->
+        <!--聊天内容 content end-->
+        <div class="footer">
+                <div class="chat02_bar" onfocus="this.blur();" onclick="sendText()">发送</div>
+                <div id="input_content" class="chat02_content">
+                    <textarea id="talkInputId" style="resize: none;"></textarea>
+                </div>
+                <div id="audio" o="0" class="yuyinviewbox">点击开始录音</div>
+                <div class="eachjp_yuyin on"></div>
+                <div style="clear: both;"></div>
+        </div>
+</body>
+</html>
+

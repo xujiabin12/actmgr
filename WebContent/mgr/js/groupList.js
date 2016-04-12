@@ -1,6 +1,9 @@
 var util  = window._util;
 $(function(){
 	selectList();
+	 var uinfo = util.getItem("us");
+     uinfo =  $.parseJSON(uinfo);
+     console.log(uinfo);
 });
 
 function selectList(){
@@ -24,6 +27,7 @@ function selectList(){
             		html += "<td class='tdcenter'>";
             				html += "<a href='javascript:void(0)' onclick='deleteGroup(\""+obj.groupid+"\")'>删除</a>";
             				html += "<a href='javascript:void(0)' onclick='look(\""+obj.groupid+"\",\""+obj.groupname+"\")'>查看群成员</a>";
+            				html += "<a href='javascript:void(0)'  onclick='join(\""+obj.groupid+"\")'>进入群组</a>";
             		html +="</td>";
             		html +="</tr>";
             		$("#group").append(html);
@@ -61,6 +65,10 @@ function selectList(){
    function look(groupid,groupname){
 	   var nm = encodeURI(encodeURI(groupname));
 	   window.location.href = "groupMembers.html?groupid="+groupid+"&groupname="+nm;
+   }
+   
+   function join(groupid){
+	   window.location.href = "../mobile/home.html?groupid="+groupid;
    }
     
     
