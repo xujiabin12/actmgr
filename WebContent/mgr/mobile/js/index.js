@@ -460,3 +460,27 @@ var createHistoryMsg = function(uname,hdimg,role,nickname,content,time){
         msg +="</div>";
     $("#histontent").prepend(msg);
 };
+//播放语音接口
+var playVoice = function(serverId){
+	$.ajax({
+        type : "post",
+        dataType : "json",
+        data : {
+       	 voiceId : serverId
+        },
+        url : util.getServerUrl()+"wx/placeVoice",
+        success : function(data){
+	       	if(data.code == '0'){
+	       		toAudio(data.url);
+	       	}else{
+	       		alert("下载语音失败");
+	       	}
+        }
+    });
+};
+var toAudio = function(url){
+	 var audio = document.getElementById("actAudio");
+        audio.src = url;
+        audio.volume = 0.9;
+        audio.play();
+};
