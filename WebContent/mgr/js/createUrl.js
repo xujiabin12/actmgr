@@ -21,6 +21,27 @@ $(function(){
             });
 		}
 	});
+	$("#xcurlcreate").click(function(){
+		var url = $("#xcurl").val();
+		
+		if(url){
+			$.ajax({
+                type : "post",
+                dataType : "json",
+                data : {
+                	url : url
+                },
+                url : util.getServerUrl+"groups/createCampaignUrl",
+                success : function(data){
+                    if(data.code == '0'){
+                       $("#result").text(data.url);
+                    }else{
+                        alert(data.errorMSG);
+                    }
+                }
+            });
+		}
+	});
 	
 	
 	$("#save").click(function(){
