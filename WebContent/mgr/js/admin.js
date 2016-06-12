@@ -3,6 +3,8 @@ $(function(){
         //登陆
         $('#login').click(login);
  });
+
+
 //登录
 function login(){
 	var username= $('#name').val();

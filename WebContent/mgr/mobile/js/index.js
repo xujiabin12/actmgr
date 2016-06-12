@@ -75,6 +75,26 @@ $(function(){
             e.stopPropagation();
         }
     };
+    
+  //查看大图
+    $(".actimg").live('click',function(){
+            var src=$(this).attr('o');
+            var wid=$(this).width();
+            var hei=$(this).height();
+            if(wid>hei){
+                $('.openbox').show().find('img').attr('src',src);
+                $('.openbox img').css({'width':'100%','margin-left':'-320px','margin-top':0-(640*hei/wid)/2});
+            }else if(wid=hei){
+                $('.openbox').show().find('img').attr('src',src);
+                $('.openbox img').css({'width':'100%','margin-left':'-320px','margin-top':'-320px'});
+            }else{
+                $('.openbox').show().find('img').attr('src',src);
+                $('.openbox img').css({'height':'800px','margin-top':'-400px','margin-left':0-(800*wid/hei)/2});
+            }
+    });
+    $('.openbox,.openboxbg,.openbox img').click(function(){
+        $('.openbox').hide();
+    });
     joinGroup();
 });
 
@@ -150,7 +170,7 @@ var handleError = function(e) {
 };
 
 //发送消息
-var sendText = function(serverId) {
+var sendText = function(serverId,imgData) {
     if(!isStopSpeak()){
     	alert("你已被禁言10分钟");
         return;
@@ -159,6 +179,9 @@ var sendText = function(serverId) {
     var msg = msgInput.value;
     if(serverId){
         msg = "speak:"+serverId;
+    }
+    if(imgData){
+    	msg = "actimg:<img class='actimg'  o='"+imgData.url+"' src='"+imgData.smallUrl+"' />";;
     }
 
     if (msg == null || msg.length == 0) {
@@ -263,6 +286,10 @@ var createMsg = function(owner,headimg,nickname,content,contactDivId,role){
         var toimg = owner?"img/right.png":"img/left.png";
         content = "<img src='"+toimg+"' style='width:33px;height:24px;' onclick='playVoice(\""+speakId+"\")' />";
     }
+    //构建图片
+    if(content.indexOf("actimg:") != -1){
+    	content = content.split("actimg:")[1];
+    }
     //构建消息
     var msg = "<div class='"+cn+" "+state+"'>";
             msg +="<div class='sanjiaobox'>";
@@ -307,8 +334,9 @@ var joinGroup = function(){
 //    actUsrId = "cc30f395e3e24b0b9d3d0f68b2e7dd81";
 //    headImg = "http://wx.qlogo.cn/mmopen/PiajxSqBRaEL1yX3hCgEaonHHakZbUmL7SLRs574mxaH9wvibQDsjUUjn3ZpmGSMrxmccmiasrHPUawwHXLHeJxmg/0";
 //    login();
-//    var wxcode = util.getUrlParam("code");
     
+    
+	
     groupId = util.getUrlParam("groupid");
     var uinfo = sessionStorage.getItem("us");
     uinfo =  $.parseJSON(uinfo);
@@ -338,7 +366,6 @@ var joinGroup = function(){
    }else{
        alert("登录超时，请重新登录！");
    }
-	
 
 };
 
@@ -443,6 +470,10 @@ var createHistoryMsg = function(uname,hdimg,role,nickname,content,time){
         var toimg = (uname == curUserId)?"img/right.png":"img/left.png";
         content = "<img src='"+toimg+"' style='width:33px;height:24px;' onclick='playVoice(\""+speakId+"\")' />";
     }
+    //构建图片
+    if(content.indexOf("actimg:") != -1){
+    	content = content.split("actimg:")[1];
+    }
     //构建消息
     var msg = "<div class='"+cn+"'>";
         msg +="<div class='sanjiaobox'>";
@@ -484,3 +515,20 @@ var toAudio = function(url){
         audio.volume = 0.9;
         audio.play();
 };
+
+function ajaxFileUpload(){
+	$("#fileform").ajaxSubmit({
+		url : util.getServerUrl()+"upload/fileUpload",
+		type : "post",
+		dataType : "json",
+		clearForm : true,
+		resetForm : true,
+		success : function(data){
+			if(data.code == '0'){
+				sendText("",data);
+			}else{
+				alert("发送图片失败");
+			}
+		}
+	});
+}
