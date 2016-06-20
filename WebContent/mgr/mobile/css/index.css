@@ -279,7 +279,7 @@
 .openbox img{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 20px;
     z-index: 2;
 }
 

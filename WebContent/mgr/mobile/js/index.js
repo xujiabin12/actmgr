@@ -76,23 +76,21 @@ $(function(){
         }
     };
     
-  //查看大图
+    //查看大图
     $(".actimg").live('click',function(){
-            var src=$(this).attr('o');
-            var wid=$(this).width();
+	    	var src=$(this).attr('o');
+	    	var wid=$(this).width();
             var hei=$(this).height();
-            if(wid>hei){
+            if(wid<hei){
                 $('.openbox').show().find('img').attr('src',src);
-                $('.openbox img').css({'width':'100%','margin-left':'-320px','margin-top':0-(640*hei/wid)/2});
-            }else if(wid=hei){
-                $('.openbox').show().find('img').attr('src',src);
-                $('.openbox img').css({'width':'100%','margin-left':'-320px','margin-top':'-320px'});
+                $('.openbox img').css({'height':$(window).height()*0.8,'top':'10%','margin-left':0-($(window).height()*wid/hei*0.8)/2});
             }else{
                 $('.openbox').show().find('img').attr('src',src);
-                $('.openbox img').css({'height':'800px','margin-top':'-400px','margin-left':0-(800*wid/hei)/2});
+                $('.openbox img').css({'width':'50%','left':'25%','margin-top':0-($(window).width()*hei/wid *0.5)/2});
             }
     });
     $('.openbox,.openboxbg,.openbox img').click(function(){
+    	$('.openbox img').attr('src','');
         $('.openbox').hide();
     });
     joinGroup();
